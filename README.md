@@ -135,3 +135,59 @@ export default App;
 
 ## Modifier state
 
+1. Create actions and actions creators
+
+```javascript
+export const INPUT_CHANGE ='INPUT_CHANGE';
+
+export const inputChange =(text) => ({
+    type: INPUT_CHANGE,
+    text,
+})
+```
+
+2. Ajouter action dans mon reducer
+
+```javascript
+import {INPUT_CHANGE} from '../actions/messagesActions'
+
+const reducerMessage = (state = stateInitial,action ={}) => {
+
+switch(action.type){
+  case INPUT_CHANGE:
+    
+    return {
+      ...state,
+      messageText:action.text,
+    };
+    default: 
+    return state;
+}
+
+}
+
+export default reducerMessage;
+```
+
+3. Creer container
+
+```javascript
+import {connect} from 'react-redux';
+import MessageForm from '../components/MessageForm';
+import {inputChange} from '../actions/messagesActions'
+
+const mapDispatchToProps = (dispatch) => ({
+onMessageChange:(textesaisi)=>{
+    dispatch(inputChange(textesaisi));
+    
+        },
+onMessageSubmit:()=>{
+    console.log('message');
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
+```
+
+```javascript
+```

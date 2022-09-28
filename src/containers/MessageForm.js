@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import MessageForm from '../components/MessageForm';
 
-import {inputChange} from '../actions/messagesActions'
+import {inputChange, messageSubmit} from '../actions/messagesActions'
 
 const mapStateToProps = (state)=>({
     messageText:state.messages.messageText,
@@ -14,7 +14,7 @@ onMessageChange:(textesaisi)=>{
     
         },
 onMessageSubmit:()=>{
-    console.log('message');
+    dispatch(messageSubmit());
   }
 });
 
