@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import MessageForm from '../MessageForm';
+import MessageForm from '../../containers/MessageForm';
 import MessageList from '../../containers/MessagesList';
 import './style.scss'
 // == Composant
@@ -13,13 +13,7 @@ const App = () => (
     
    
     <MessageList />
-    <MessageForm messageText="coucou" 
-    onMessageChange={(textesaisi)=>{
-console.log(textesaisi);
-    }}
-    onMessageSubmit={()=>{
-      console.log('message');
-    }}
+    <MessageForm 
 
     />
   </div>
