@@ -1,4 +1,4 @@
-
+import {INPUT_CHANGE} from '../actions/messagesActions'
 
 const stateInitial = {
     list:[
@@ -26,6 +26,12 @@ const stateInitial = {
 const reducerMessage = (state = stateInitial,action ={}) => {
 
 switch(action.type){
+  case INPUT_CHANGE:
+    
+    return {
+      ...state,
+      messageText:action.text,
+    };
     default: 
     return state;
 }

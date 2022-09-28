@@ -2,15 +2,16 @@ import {connect} from 'react-redux';
 
 import MessageForm from '../components/MessageForm';
 
-
+import {inputChange} from '../actions/messagesActions'
 
 const mapStateToProps = (state)=>({
     messageText:state.messages.messageText,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
 onMessageChange:(textesaisi)=>{
-    console.log(textesaisi);
+    dispatch(inputChange(textesaisi));
+    
         },
 onMessageSubmit:()=>{
     console.log('message');
