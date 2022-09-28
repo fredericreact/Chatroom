@@ -1,11 +1,15 @@
 // == Import npm
 import React from 'react';
-
+import MessageForm from '../MessageForm';
+import MessageList from '../MessageList';
+import './style.scss'
 // == Composant
 const App = () => (
-  <div >
+  <div className='app'>
     
-    <h1>Composant : App</h1>
+   
+    <MessageList/>
+    <MessageForm/>
   </div>
 );
 

@@ -1,0 +1,23 @@
+
+.messages {
+    flex: 1;
+    background-color: rgb(190, 187, 187);
+
+}
+
+.message {
+    margin : 1.2em;
+
+    &-author{
+
+    }
+
+    &-content {
+        background-color: #efefef;
+        border-radius: 10px;
+        display: inline-block;
+        margin: 10px;
+        border : 1px solid #cdcdcd;
+        padding : 15px;
+    }
+}
