@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import './style.scss'
 const Messages =({list}) => {
+    
     return(
         <div className='messages'>
         {

@@ -2,7 +2,7 @@
 
 const stateInitial = {
     list:[
-        [
+        
             {
               id:'1',
               author:'ben',
@@ -18,7 +18,7 @@ const stateInitial = {
               author:'John',
               content:'hi',
             },
-          ]
+          
     ],
     messageText:"je suis en cours de",
 }
@@ -31,6 +31,7 @@ switch(action.type){
 }
 
 }
+
 
 
 export default reducerMessage;
