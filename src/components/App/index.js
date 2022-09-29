@@ -12,7 +12,16 @@ import './style.scss'
 const App = () => (
   <div className='app'>
     
-   <Settings/>
+   <Settings 
+   opened
+  formData={{email:'hello', password:'123'}}
+onInputChange={()=>{}}
+onFormSubmit={()=>{}}
+onToggle={()=>{}}
+
+
+
+   />
     <MessageList />
     <MessageForm 
 

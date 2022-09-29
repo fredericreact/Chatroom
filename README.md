@@ -395,5 +395,17 @@ onMessageSubmit:()=>{
 export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
 ```
 
+### Creer dans un object une propriete dont le nom correspond de la valeur d'une variable : 
+
 ```javascript
+const handleInputChange =(e)=>{
+    console.log(e.target.name, e.target.value)
+    const {name, value} =e.target;
+    console.log({
+        [name]:value,
+    })
+    onInputChange({
+        [name]:value
+    });
+    }
 ```
