@@ -6,7 +6,27 @@ const Settings =() => {
     
     return(
         <div className='settings'>
-       Settings
+
+       <div className='settings-zone'>
+        <button className="toggle-button " type="button">+</button>
+       </div>
+
+        <form className='settings-zone'>
+        <input
+        type="email"
+        placeholder='email'
+        />
+
+        <input
+         type="password"
+        placeholder='password'
+        />
+
+        <button className="submit-button" type="submit">
+            Envoyer
+        </button>
+        </form>
+
         </div>
     )
 }
