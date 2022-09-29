@@ -15,6 +15,11 @@ npm install react-redux
 npm i redux-devtools-extension
 ```
 
+# uuid
+```javascript
+npm i uuid
+```
+
 # Partie 1 : Mettre en place Redux Javascript Vanilla
 1. Creer le store en lui donnant le reducer
 

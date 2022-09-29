@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import Settings from '../components/Settings';
 
 import { loginInputChange } from '../actions/user';
-
+import { toggleLoginForm } from '../actions/user';
 
 const mapState = (state) =>({
     opened:state.user.opened,
@@ -18,7 +18,7 @@ const mapDispatch =(dispatch)=>({
           console.log('il y a submit')
         },
         onToggle:()=>{
-          console.log('il y a affichage')
+          dispatch(toggleLoginForm());
         }
 });
 
