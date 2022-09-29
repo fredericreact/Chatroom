@@ -1,4 +1,6 @@
 import {INPUT_CHANGE, MESSAGE_SUBMIT} from '../actions/messagesActions'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const stateInitial = {
     list:[
@@ -12,6 +14,9 @@ const stateInitial = {
 const reducerMessage = (state = stateInitial,action ={}) => {
 
 switch(action.type){
+
+
+
   case MESSAGE_SUBMIT:
 
   return{
@@ -19,7 +24,7 @@ switch(action.type){
       list: [
         ...state.list,
         {
-          id:'5',
+          id:uuidv4(),
           author:'tom',
           content:state.messageText,
         } ,

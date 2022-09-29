@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 import Settings from '../components/Settings';
 
-import { loginInputChange } from '../actions/user';
-import { toggleLoginForm } from '../actions/user';
+import { loginInputChange,toggleLoginForm,loginSubmit } from '../actions/user';
+
 
 const mapState = (state) =>({
     opened:state.user.opened,
@@ -15,7 +15,7 @@ const mapDispatch =(dispatch)=>({
        dispatch(loginInputChange(cequiaetetape))
         },
         onFormSubmit:()=>{
-          console.log('il y a submit')
+         dispatch(loginSubmit());
         },
         onToggle:()=>{
           dispatch(toggleLoginForm());
