@@ -2,6 +2,7 @@
 import React from 'react';
 import MessageForm from '../../containers/MessageForm';
 import MessageList from '../../containers/MessagesList';
+import Settings from '../Settings';
 import './style.scss'
 // == Composant
 
@@ -11,7 +12,7 @@ import './style.scss'
 const App = () => (
   <div className='app'>
     
-   
+   <Settings/>
     <MessageList />
     <MessageForm 
 
