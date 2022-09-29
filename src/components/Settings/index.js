@@ -11,14 +11,14 @@ const Settings =({
 }) => {
     
     const handleInputChange =(e)=>{
-console.log(e.target.name, e.target.value)
-const {name, value} =e.target;
-console.log({
-    [name]:value,
-})
-onInputChange({
-    [name]:value
-});
+    console.log(e.target.name, e.target.value)
+    const {name, value} =e.target;
+    console.log({
+        [name]:value,
+    })
+    onInputChange({
+        [name]:value
+    });
     }
 
     return(
