@@ -1,23 +1,28 @@
-
 .messages {
     flex: 1;
-    background-color: rgb(190, 187, 187);
-
-}
-
-.message {
-    margin : 1.2em;
-
-    &-author{
-
+    background-color: #dcdcdc;
+    overflow-y: auto;
+  }
+  
+  .message {
+    margin: 1.2em;
+    text-align: left;
+    
+    &-author {
+      
     }
-
+    
     &-content {
-        background-color: #efefef;
-        border-radius: 10px;
-        display: inline-block;
-        margin: 10px;
-        border : 1px solid #cdcdcd;
-        padding : 15px;
+      background-color: #efefef;
+      display: inline-block;
+      margin: 10px;
+      border: 1px solid #cdcdcd;
+      padding: 15px;
+      border-radius: 10px;
+      
     }
-}
+    
+  }
+  .message-other {
+    text-align: right;
+  }

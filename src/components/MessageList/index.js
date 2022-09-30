@@ -2,14 +2,14 @@ import React from 'react';
 
 import PropTypes from 'prop-types'
 import './style.scss'
-const Messages =({list}) => {
+const Messages =({list, pseudo}) => {
     
     return(
         <div className='messages'>
         {
             list.map((messageObject)=>{
                 return(
-                    <Message key={messageObject.id} {...messageObject}/>
+                    <Message key={messageObject.id} {...messageObject} pseudo={pseudo}/>
                 )
 
             })
@@ -26,14 +26,15 @@ Messages.propTypes ={
          
         })
     ).isRequired,
+    pseudo: PropTypes.string.isRequired,
 };
 
 
 
 
-const Message =({author,content})=>{
+const Message =({author,content,pseudo})=>{
     return(
-<div className='message'>
+<div className={pseudo === author ? 'message' : 'message message-other'}>
     <p className='message-author'>{author}</p>
     <p className='message-content'>{content}</p>
 </div>
