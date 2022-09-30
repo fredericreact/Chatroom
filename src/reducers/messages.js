@@ -2,20 +2,29 @@ import {INPUT_CHANGE, MESSAGE_SUBMIT} from '../actions/messagesActions'
 import { v4 as uuidv4 } from 'uuid';
 
 
+import { LOGIN_SUCCESS,LOGIN_ERROR } from '../actions/user';
+
 const stateInitial = {
-    list:[
-        
-            
-          
-    ],
+    list:[],
     messageText:"",
+    author:'anonyme',
 }
 
 const reducerMessage = (state = stateInitial,action ={}) => {
 
 switch(action.type){
 
+  case LOGIN_SUCCESS:
+    return{
+      ...state,
+      author:action.payload.pseudo
+    };
 
+  case LOGIN_ERROR:
+    return{
+      ...state,
+      author:'anonyme',
+    };  
 
   case MESSAGE_SUBMIT:
 
@@ -25,7 +34,7 @@ switch(action.type){
         ...state.list,
         {
           id:uuidv4(),
-          author:'tom',
+          author:state.author,
           content:state.messageText,
         } ,
       ],

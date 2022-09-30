@@ -2,16 +2,27 @@ import React from 'react';
 
 import PropTypes from 'prop-types'
 import './style.scss'
-const MessageForm =({messageText,onMessageChange,onMessageSubmit}) => {
+const MessageForm =({messageText,onMessageChange,onMessageSubmit, loading,user}) => {
+    let placeholder="Connectez vous pour tchater";
+
+    if (loading) {
+        placeholder="Connexion en cours...";
+    }
+
+    if (user.pseudo) {
+        placeholder= `Saisissez votre message ${user.pseudo}`
+    }
+
     return(
         <form className="message-form" onSubmit={(e)=>{
             e.preventDefault();
             onMessageSubmit();
         }}>
             <input 
+            disabled={!user.pseudo}
             className="form-input" 
             type="text" 
-            placeholder="saisie" 
+            placeholder={placeholder}
             value={messageText}
             onChange={(e)=>{
                 const cequiaetesaisi=e.target.value;

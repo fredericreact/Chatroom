@@ -6,6 +6,8 @@ import {inputChange, messageSubmit} from '../actions/messagesActions'
 
 const mapStateToProps = (state)=>({
     messageText:state.messages.messageText,
+    loading:state.user.loading,
+    user:state.user.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
