@@ -4,7 +4,23 @@
     <title>React App</title>
   </head>
   <body>
-    <script src="./src/index.js" type="text/jsx"></script>
+
+
+    <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+
+    <script>
+
+      const socket = window.io('http://localhost:3001');
+
+      socket.on('send_message', (message)=> {
+        console.log('un message est arrive', message);
+      })
+
+      socket.emit('send_message', { author: 'bibi', content: "je t'aime" })
+
+    </script>
+
+
     <div id="root"></div>
 
   </body>
