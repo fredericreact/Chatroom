@@ -1,5 +1,5 @@
 import {LOGIN_SUCCESS} from '../actions/user';
-import {MESSAGE_SUBMIT} from '../actions/messagesActions';
+import {MESSAGE_SUBMIT, messageReceived} from '../actions/messagesActions';
 
 let socket;
 
@@ -26,6 +26,7 @@ switch (action.type) {
       // arrivent via le serveur
         socket.on('send_message', (message)=> {
             console.log('un message est arrive', message);
+            dispatch(messageReceived(message));
           })
     
 
@@ -40,5 +41,6 @@ switch (action.type) {
     break;
 }
     default:
+
  }
 };

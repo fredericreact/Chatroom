@@ -1,5 +1,5 @@
-import {INPUT_CHANGE, MESSAGE_SUBMIT} from '../actions/messagesActions'
-import { v4 as uuidv4 } from 'uuid';
+import {INPUT_CHANGE, MESSAGE_SUBMIT, MESSAGE_RECEIVED} from '../actions/messagesActions'
+
 
 
 import { LOGIN_SUCCESS,LOGIN_ERROR } from '../actions/user';
@@ -26,23 +26,29 @@ switch(action.type){
       author:'anonyme',
     };  
 
-  // case MESSAGE_SUBMIT:
+  case MESSAGE_RECEIVED:
+    return{
+      ...state,
+      list: [...state.list, action.payload]
+    };
 
-  // return{
-  //     ...state,
-  //     list: [
-  //       ...state.list,
-  //       {
-  //         id:uuidv4(),
-  //         author:state.author,
-  //         content:state.messageText,
-  //       } ,
-  //     ],
-  //     messageText:'',
-  //   }
+  case MESSAGE_SUBMIT:
+
+  return{
+      ...state,
+      // list: [
+      //   ...state.list,
+      //   {
+      //     id:uuidv4(),
+      //     author:state.author,
+      //     content:state.messageText,
+      //   } ,
+      // ],
+      messageText:'',
+    }
 
 
-  
+
   case INPUT_CHANGE:
     
     return {
