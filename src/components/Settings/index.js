@@ -72,7 +72,7 @@ Settings.propTypes ={
     }).isRequired,
     onToggle: PropTypes.func.isRequired,
     onInputChange: PropTypes.func.isRequired,
-    onForSubmit: PropTypes.func.isRequired,
+    onFormSubmit: PropTypes.func.isRequired,
 }
 
 

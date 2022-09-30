@@ -1,52 +1,53 @@
+$transitionDuration: 0.4s;
+
 .settings {
-    display:flex;
-    position: fixed;
-    top: 20px;
-    right: -200px;
-    width: 250px;
-&.opened{
+  display: flex;
+  position: fixed;
+  top: 20px;
+  right: -200px;
+  width: 250px;
+  transition: right $transitionDuration ease;
+  &.opened {
     right: 20px;
-}
+  }
 }
 
 .settings-zone {
-padding:5px;
+  padding: 5px;
 
-input{
-    margin-bottom: 10px ;
+  input {
+    margin-bottom: 10px;
     width: 100%;
-    padding : 10px;
-    border : none;
-    border-radius: 5px;
-}
-}
-
-.submit-button {
-    background-color: #531AFF;
-    color:#fff;
     padding: 10px;
-    border-radius: 5px;
-    width: 100%;
     border: none;
+    border-radius: 5px;
+  }
 
+}
+.submit-button {
+  background-color: #531AFF;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
 }
 
 .toggle-button {
-    display:flex;
-    background-color: white;
-    color: #935FFF;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border : 1px solid #bbb;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    font-weight: bold;
-
-    &.opened {
-        transform:rotate(45deg)
-    }
-
+  display: flex;
+  background-color: #fff;
+  color: #935FFF;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #bbb;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+  transform: rotate(0deg);
+  transition: transform ease $transitionDuration;
+  &.opened {
+    transform: rotate(-225deg);
+  }
 }
-

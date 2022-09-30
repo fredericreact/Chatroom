@@ -20,6 +20,11 @@ npm i redux-devtools-extension
 npm i uuid
 ```
 
+# axios
+```javascript
+npm install axios
+```
+
 # Partie 1 : Mettre en place Redux Javascript Vanilla
 1. Creer le store en lui donnant le reducer
 
