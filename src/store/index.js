@@ -2,7 +2,7 @@ import {createStore, compose, applyMiddleware} from 'redux';
 
 
 import rootReducer from '../reducers/index'
-import logMiddleware from '../middleware/logMiddleware';
+import socketMiddleware from '../middleware/socketMiddleware';
 import loginMiddleware from '../middleware/loginMiddleware';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -10,6 +10,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancers = composeEnhancers(
   applyMiddleware(
     loginMiddleware,
+    socketMiddleware,
     // logMiddleware,
     
     

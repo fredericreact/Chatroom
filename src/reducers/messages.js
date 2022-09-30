@@ -26,20 +26,23 @@ switch(action.type){
       author:'anonyme',
     };  
 
-  case MESSAGE_SUBMIT:
+  // case MESSAGE_SUBMIT:
 
-  return{
-      ...state,
-      list: [
-        ...state.list,
-        {
-          id:uuidv4(),
-          author:state.author,
-          content:state.messageText,
-        } ,
-      ],
-      messageText:'',
-    }
+  // return{
+  //     ...state,
+  //     list: [
+  //       ...state.list,
+  //       {
+  //         id:uuidv4(),
+  //         author:state.author,
+  //         content:state.messageText,
+  //       } ,
+  //     ],
+  //     messageText:'',
+  //   }
+
+
+  
   case INPUT_CHANGE:
     
     return {
