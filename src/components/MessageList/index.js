@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import PropTypes from 'prop-types'
 import './style.scss'
+
 const Messages =({list, pseudo}) => {
     
+    const maFutureDiv =useRef(null);
+
+    useEffect(()=>{
+        console.log('rerendu')
+        console.log(maFutureDiv.current);
+    },[list]);
+
+
     return(
-        <div className='messages'>
+
+
+        <div ref={maFutureDiv} id='messages' className='messages'>
         {
             list.map((messageObject)=>{
                 return(
@@ -19,6 +30,8 @@ const Messages =({list, pseudo}) => {
 }
 
 
+
+
 Messages.propTypes ={
     list:PropTypes.arrayOf(
         PropTypes.shape({
@@ -26,7 +39,7 @@ Messages.propTypes ={
          
         })
     ).isRequired,
-    pseudo: PropTypes.string.isRequired,
+    pseudo: PropTypes.string,
 };
 
 
