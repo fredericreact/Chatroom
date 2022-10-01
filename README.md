@@ -11,8 +11,19 @@ npm install react-redux
 ```
 
 # redux-devtools-extension
+Juste besoin du package Redux et de ce bout de code :
 ```javascript
-npm i redux-devtools-extension
+import { createStore } from 'redux';
+import rootReducer from '../store/reducer'
+
+const composeEnhancersss = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+
+const store = createStore(
+  rootReducer,
+  composeEnhancersss(),
+);
+
+export default store;
 ```
 
 # uuid
