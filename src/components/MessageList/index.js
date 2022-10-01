@@ -27,7 +27,11 @@ const Messages =({list, pseudo}) => {
         {
             list.map((messageObject)=>{
                 return(
-                    <Message key={messageObject.id} {...messageObject} pseudo={pseudo}/>
+                    <Message
+            key={messageObject.id}
+            {...messageObject}
+            pseudo={pseudo || 'anonyme'}
+          />
                 )
 
             })

@@ -3,15 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import './style.scss'
 const MessageForm =({messageText,onMessageChange,onMessageSubmit, loading,user}) => {
-    let placeholder="Connectez vous pour tchater";
+    let placeholder=`Saisissez votre message ${user.pseudo || 'anonyme'}`;
 
     if (loading) {
         placeholder="Connexion en cours...";
     }
 
-    if (user.pseudo) {
-        placeholder= `Saisissez votre message ${user.pseudo}`
-    }
+   
 
     return(
         <form className="message-form" onSubmit={(e)=>{
@@ -19,7 +17,7 @@ const MessageForm =({messageText,onMessageChange,onMessageSubmit, loading,user})
             onMessageSubmit();
         }}>
             <input 
-            disabled={!user.pseudo}
+            
             className="form-input" 
             type="text" 
             placeholder={placeholder}
@@ -30,7 +28,7 @@ const MessageForm =({messageText,onMessageChange,onMessageSubmit, loading,user})
             }}
             
             ></input>
-            <button type="submit" className='form-submit'> &gt; </button>
+            <button  type="submit" className='form-submit'> &gt; </button>
         </form>
     )
 }

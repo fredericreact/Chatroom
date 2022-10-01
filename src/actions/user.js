@@ -6,7 +6,7 @@ export const LOGIN_SUBMIT ='LOGIN_SUBMIT'
 
 export const LOGIN_SUCCESS ='LOGIN_SUCCESS';
 export const LOGIN_ERROR ='LOGIN_ERROR';
-
+export const CONNECT_SOCKET = 'CONNECT_SOCKET';
 
 export const loginInputChange = (payload) =>({
     type:LOGIN_INPUT_CHANGE,
@@ -30,3 +30,7 @@ export const loginSuccess =(payload)=>({
 export const loginError =()=>({
     type:LOGIN_ERROR,
 })
+
+export const connectSocket = () => ({
+    type: CONNECT_SOCKET,
+  });

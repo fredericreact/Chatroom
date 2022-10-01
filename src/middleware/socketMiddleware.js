@@ -1,4 +1,4 @@
-import {LOGIN_SUCCESS} from '../actions/user';
+import {CONNECT_SOCKET} from '../actions/user';
 import {MESSAGE_SUBMIT, messageReceived} from '../actions/messagesActions';
 
 let socket;
@@ -18,7 +18,7 @@ next(action);
 
 switch (action.type) {
 
-    case LOGIN_SUCCESS:
+    case CONNECT_SOCKET:
         // JE crée ma connexion et la sauvegarde
       // dans une variable déclarée en scope global
         socket = window.io('http://localhost:3001');
