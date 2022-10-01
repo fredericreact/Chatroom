@@ -9,7 +9,14 @@ const Messages =({list, pseudo}) => {
 
     useEffect(()=>{
         console.log('rerendu')
-        console.log(maFutureDiv.current);
+        console.log(maFutureDiv, maFutureDiv.current);
+        const maDiv = maFutureDiv.current;
+        console.log( maDiv.scrollHeight);
+        maDiv.scrollTo({
+            top: maDiv.scrollHeight,
+            behavior: 'smooth',
+          });
+
     },[list]);
 
 
@@ -35,14 +42,16 @@ const Messages =({list, pseudo}) => {
 Messages.propTypes ={
     list:PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
          
         })
     ).isRequired,
     pseudo: PropTypes.string,
 };
 
-
+Messages.defaults = {
+    pseudo: '',
+}
 
 
 const Message =({author,content,pseudo})=>{
