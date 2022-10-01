@@ -419,3 +419,223 @@ const handleInputChange =(e)=>{
     });
     }
 ```
+
+
+
+### Middleware
+
+Action asyncrhoone
+
+Redux gere pas l’asyncrhone, il est synchrone
+
+Il s’attend a ce que tout soit deja pret, que les object d’action sont deja prets a etre envoyes aux containers et reducers qui vont dispatcher action ou updater state
+
+REDUX Attend rien
+
+Middleware solve this issue : attend que j’ai les resultat avant de les passer
+
+Il va se placer entre une action et un reducer
+
+Middleware c’est un triple fonction avec :
+
+-acces au store
+
+-Next c’est une fonction qui permet de laisser passer action
+
+-Et l’action
+
+Je laisse passer les actions d’abord, puis je faire mes blocages apres
+
+```javascript
+const logMiddleware = (store) => (next) => (action) => {
+    console.log(store.getState());
+    console.log('Je laisse passer cette action: ', action);
+    next(action);
+  };
+ 
+  export default logMiddleware;
+```
+
+```javascript
+import {createStore, compose, applyMiddleware} from 'redux';
+ 
+ 
+import rootReducer from '../reducers/index'
+import logMiddleware from '../middleware/logMiddleware';
+ 
+ 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+ 
+const enhancers = composeEnhancers(
+  applyMiddleware(
+    logMiddleware,
+    // secondMiddleware,
+  ),
+ 
+);
+ 
+const store = createStore(
+    rootReducer,   enhancers
+)
+ 
+console.log(store.getState());
+ 
+export default store
+```
+Redux utilise ce middleware via le store
+
+
+<br> 
+Je cree middleware
+
+Next va laisser passer toutes les actions
+
+Si je mets next en bas, si je le mets pas en haut, ca bloque tout
+
+Mais si l’action est login submit , on laisse passer laction login submit mais mais on va lancer une etape en plus, qui en fonction du resultat va dispatcher une nvew action
+
+Ici j’utilise getstate au lieu de connect parce que je ne passe pas de props au components
+
+```javascript
+import { LOGIN_SUBMIT, loginSuccess,loginError } from "../actions/user";
+ 
+import axios from "axios";
+ 
+ 
+const url='http://localhost:3001/login';
+ 
+export default (store)=>(next)=>(action)=> {
+ 
+    console.log('laisse passe par middleware');
+ 
+    next(action);
+ 
+    switch(action.type) {
+ 
+    case LOGIN_SUBMIT:
+        axios({
+            method: 'post',
+            url,
+            data:store.getState().user.formData,
+        })
+        .then((res)=>{
+            console.log(res.data);
+            store.dispatch(loginSuccess(res.data))
+        })
+        .catch((err)=>{
+            console.log(err);
+            store.dispatch(loginError())
+        });
+ 
+        break;
+ 
+ 
+    default:
+}
+ 
+};
+
+```
+
+
+Definir comment le reducer va reagir aux actions dispatche par le middleware
+
+
+```javascript
+import { LOGIN_INPUT_CHANGE ,
+    TOGGLE_LOGIN_FORM,
+    LOGIN_SUBMIT,
+    LOGIN_ERROR,
+    LOGIN_SUCCESS} from "../actions/user";
+ 
+ 
+const initialState={
+    loading:false,
+    opened:true,
+    user:{},
+    formData:{
+        email:'bouclierman@herocorp.io',
+        password:'jennifer',
+    },
+}
+ 
+ 
+ 
+export default (state=initialState,action={}) =>{
+    switch(action.type) {
+ 
+        case LOGIN_SUBMIT:
+            return{
+              ...state,
+              opened:false,
+              loading:true,  
+            }
+ 
+        case LOGIN_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                formData: {email:'',password:''},
+                user:{
+                    ...action.payload,
+                }
+            }
+       
+        case LOGIN_ERROR:
+            return {
+                ...state,
+                user:{},
+                loading:false,
+                opened:true,
+            }    
+ 
+        case TOGGLE_LOGIN_FORM:
+            return {
+                ...state,
+                opened:!state.opened,
+            }
+        case LOGIN_INPUT_CHANGE:
+            return {
+                ...state,
+                formData: {
+                    ...state.formData,
+                    ...action.payload,
+                }
+            }
+        default:
+            return state;
+    }
+}
+
+```
+
+Importer et ajouter dans le store
+
+```javascript
+import {createStore, compose, applyMiddleware} from 'redux';
+ 
+ 
+import rootReducer from '../reducers/index'
+import logMiddleware from '../middleware/logMiddleware';
+import loginMiddleware from '../middleware/loginMiddleware';
+ 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+ 
+const enhancers = composeEnhancers(
+  applyMiddleware(
+    loginMiddleware,
+    // logMiddleware,
+   
+   
+  ),
+ 
+);
+ 
+const store = createStore(
+    rootReducer,   enhancers
+)
+ 
+console.log(store.getState());
+ 
+export default store
+```
